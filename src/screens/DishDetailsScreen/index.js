@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginVertical: 10,
   },
+  description: {
+    color: "grey",
+  },
   separator: {
     height: 1,
     backgroundColor: "lightgrey",
