@@ -9,7 +9,7 @@ const DishlistItem = ({ dish }) => {
         <Text style={styles.description} numberOfLines={2}>
           {dish.description}
         </Text>
-        <Text style={styles.price}> $ {dish.price}</Text>
+        <Text style={styles.price}> R {dish.price}</Text>
       </View>
       {dish.image && (
         <Image source={{ uri: dish.image }} style={styles.image} />

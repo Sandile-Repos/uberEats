@@ -12,7 +12,7 @@ const Header = ({ restaurant }) => {
       <View style={styles.container}>
         <Text style={styles.title}>{restaurant.name}</Text>
         <Text style={styles.subtitle}>
-          $ {restaurant.deliveryFee} &#8226; {restaurant.minDeliveryTime}-
+          R {restaurant.deliveryFee} &#8226; {restaurant.minDeliveryTime}-
           {restaurant.maxDeliveryTime} minutes
         </Text>
       </View>
