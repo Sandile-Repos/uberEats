@@ -46,19 +46,6 @@ const styles = StyleSheet.create({
     backgroundColor: "lightgrey",
     marginVertical: 10,
   },
-  row: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 50,
-  },
-  quantityContainer: {
-    backgroundColor: "lightgrey",
-    paddingHorizontal: 5,
-    paddingVertical: 2,
-    borderRadius: 3,
-    marginRight: 10,
-  },
   button: {
     backgroundColor: "black",
     marginTop: "auto",

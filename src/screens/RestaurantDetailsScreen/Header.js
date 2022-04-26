@@ -7,10 +7,7 @@ import styles from "./styles";
 
 const Header = ({ restaurant }) => {
   return (
-    <LinearGradient
-      // Button Linear Gradient
-      colors={["rgba(0,0,0,0.2)", "transparent"]}
-    >
+    <LinearGradient colors={["rgba(0,0,0,0.2)", "transparent"]}>
       <View style={styles.page}>
         <Image source={{ uri: restaurant.image }} style={styles.image} />
 
