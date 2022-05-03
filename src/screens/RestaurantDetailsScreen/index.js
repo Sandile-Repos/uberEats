@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
-import { View, FlatList, ActivityIndicator } from "react-native";
+import {
+  View,
+  FlatList,
+  ActivityIndicator,
+  Pressable,
+  Text,
+} from "react-native";
 import DishListItem from "../../components/DishListItem";
 import { Ionicons } from "@expo/vector-icons";
 import Header from "./Header";
 import styles from "./styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { DataStore } from "aws-amplify";
-import { Restaurant, Dish } from "../../models";
+import { Restaurant, Dish, BasketDish } from "../../models";
+import { useBasketContext } from "../../contexts/BasketContext";
 
 const RestaurantDetailsScreen = () => {
   const [restaurant, setRestaurant] = useState(null);
@@ -15,15 +22,29 @@ const RestaurantDetailsScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
 
-  const id = route.params.id;
+  const id = route.params?.id;
+
+  const {
+    setRestaurant: setBasketRestaurant,
+    basket,
+    basketDishes,
+  } = useBasketContext();
 
   useEffect(() => {
+    if (!id) {
+      return;
+    }
+    setBasketRestaurant(null);
     // fetch the restaurants with the id
     DataStore.query(Restaurant, id).then(setRestaurant);
     DataStore.query(Dish, (dish) => dish.restaurantID("eq", id)).then(
       setDishes
     );
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    setBasketRestaurant(restaurant);
+  }, [restaurant]);
 
   if (!restaurant) {
     return <ActivityIndicator size={"large"} color="gray" />;
@@ -43,6 +64,16 @@ const RestaurantDetailsScreen = () => {
         style={styles.iconContainer}
         onPress={() => navigation.goBack()}
       />
+      {basket && (
+        <Pressable
+          onPress={() => navigation.navigate("Basket")}
+          style={styles.button}
+        >
+          <Text style={styles.buttonText}>
+            Open basket ({basketDishes.length})
+          </Text>
+        </Pressable>
+      )}
     </View>
   );
 };
