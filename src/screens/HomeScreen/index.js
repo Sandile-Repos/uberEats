@@ -7,10 +7,10 @@ import { Restaurant } from "../../models";
 export default function HomeScreen() {
   const [restaurants, setRestaurants] = useState([]);
 
-  const fetchRestaurants = async () => {
-    const results = await DataStore.query(Restaurant);
-    setRestaurants(results);
-  };
+  // const fetchRestaurants = async () => {
+  //   const results = await DataStore.query(Restaurant);
+  //   setRestaurants(results);
+  // };
 
   useEffect(() => {
     // fetchRestaurants();

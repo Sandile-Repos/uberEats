@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StyleSheet, Image, Pressable } from "react-native";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
-const DishlistItem = ({ dish }) => {
+const DishListItem = ({ dish }) => {
   const navigation = useNavigation();
 
   const onPress = () => {
@@ -50,4 +50,4 @@ const styles = StyleSheet.create({
     aspectRatio: 1,
   },
 });
-export default DishlistItem;
+export default DishListItem;

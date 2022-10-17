@@ -15,6 +15,7 @@ const AuthContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
+    //setting database user when component mounts
     DataStore.query(User, (user) => user.sub("eq", sub)).then((users) => {
       setDbUser(users[0]);
     });

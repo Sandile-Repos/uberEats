@@ -1,25 +1,27 @@
 import React from "react";
 import { View, Text, StyleSheet, FlatList } from "react-native";
 import BasketDishItem from "../../components/BasketDishItem";
-import restaurants from "../../../assets/data/restaurants.json";
-const restaurant = restaurants[0];
+import { useBasketContext } from "../../contexts/BasketContext";
 
 const BasketScreen = () => {
+  const { restaurant, basketDishes, totalPrice } = useBasketContext();
   return (
     <View style={styles.page}>
-      <Text style={styles.name}>{restaurant.name}</Text>
+      <Text style={styles.name}>{restaurant?.name}</Text>
 
       <Text style={styles.itemTitle}>Your items</Text>
 
       <FlatList
-        data={restaurant.dishes}
+        data={basketDishes}
         renderItem={({ item }) => <BasketDishItem basketDish={item} />}
       />
 
       <View style={styles.separator} />
 
       <View style={styles.button}>
-        <Text style={styles.buttonText}>Create Order</Text>
+        <Text style={styles.buttonText}>
+          Create Order &#8226; R{totalPrice.toFixed(2)}
+        </Text>
       </View>
     </View>
   );
@@ -40,6 +42,7 @@ const styles = StyleSheet.create({
   itemTitle: {
     fontWeight: "bold",
     marginTop: 20,
+    fontSize: 19,
   },
   separator: {
     height: 1,

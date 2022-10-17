@@ -12,8 +12,12 @@ const ProfileScreen = () => {
 
   const [name, setName] = useState(dbUser?.name || "");
   const [address, setAddress] = useState(dbUser?.address || "");
-  const [lat, setLat] = useState(dbUser?.lat + "" || "0");
-  const [lng, setLng] = useState(dbUser?.lng + "" || "0");
+  const [lat, setLat] = useState(
+    (dbUser?.lat && (dbUser?.lat).toString()) || "0"
+  );
+  const [lng, setLng] = useState(
+    (dbUser?.lng && (dbUser?.lng).toString()) || "0"
+  );
 
   const onSave = async () => {
     if (dbUser) {

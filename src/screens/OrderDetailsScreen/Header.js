@@ -4,7 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import orders from "../../../assets/data/orders.json";
 import styles from "./styles";
 
-const order = orders[0];
+// const order = orders[0];
 
 const OrderDetailsHeader = ({ order }) => {
   return (

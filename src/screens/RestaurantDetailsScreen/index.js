@@ -34,6 +34,7 @@ const RestaurantDetailsScreen = () => {
     if (!id) {
       return;
     }
+    //setBasketRestaurant of previous restaurant to null before querying another restaurant
     setBasketRestaurant(null);
     // fetch the restaurants with the id
     DataStore.query(Restaurant, id).then(setRestaurant);
@@ -43,6 +44,7 @@ const RestaurantDetailsScreen = () => {
   }, [id]);
 
   useEffect(() => {
+    //passing restaurant to Basket context so we can get the restaurant id when adding to the basket
     setBasketRestaurant(restaurant);
   }, [restaurant]);
 

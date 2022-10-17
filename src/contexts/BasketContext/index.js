@@ -48,9 +48,6 @@ const BasketContextProvider = ({ children }) => {
     setBasketDishes([...basketDishes, newDish]);
   };
   const createNewBasket = async () => {
-    // DataStore.save(
-    //   new Basket({ userID: dbUser.id, restaurantID: restaurant.id })
-    // ).then(setBasket);
     const newBasket = await DataStore.save(
       new Basket({ userID: dbUser.id, restaurantID: restaurant.id })
     );

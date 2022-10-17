@@ -24,15 +24,15 @@ export const schema = {
                         "associatedWith": "basketID"
                     }
                 },
-                "restaurantID": {
-                    "name": "restaurantID",
+                "userID": {
+                    "name": "userID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
                     "attributes": []
                 },
-                "userID": {
-                    "name": "userID",
+                "restaurantID": {
+                    "name": "restaurantID",
                     "isArray": false,
                     "type": "ID",
                     "isRequired": true,
@@ -65,18 +65,18 @@ export const schema = {
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byRestaurant",
+                        "name": "byUser",
                         "fields": [
-                            "restaurantID"
+                            "userID"
                         ]
                     }
                 },
                 {
                     "type": "key",
                     "properties": {
-                        "name": "byUser",
+                        "name": "byRestaurant",
                         "fields": [
-                            "userID"
+                            "restaurantID"
                         ]
                     }
                 },
@@ -417,8 +417,8 @@ export const schema = {
                         "targetName": "orderRestaurantId"
                     }
                 },
-                "total": {
-                    "name": "total",
+                "Total": {
+                    "name": "Total",
                     "isArray": false,
                     "type": "Float",
                     "isRequired": true,
@@ -658,8 +658,8 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
-                "name": {
-                    "name": "name",
+                "sub": {
+                    "name": "sub",
                     "isArray": false,
                     "type": "String",
                     "isRequired": true,
@@ -683,6 +683,13 @@ export const schema = {
                     "name": "lng",
                     "isArray": false,
                     "type": "Float",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": true,
                     "attributes": []
                 },
@@ -713,13 +720,6 @@ export const schema = {
                         "connectionType": "HAS_MANY",
                         "associatedWith": "userID"
                     }
-                },
-                "sub": {
-                    "name": "sub",
-                    "isArray": false,
-                    "type": "String",
-                    "isRequired": true,
-                    "attributes": []
                 },
                 "createdAt": {
                     "name": "createdAt",
@@ -777,5 +777,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "6225a2c697c8242260c9d02979ce70c0"
+    "version": "edcb9f417f88a964dcae9e41ff939338"
 };

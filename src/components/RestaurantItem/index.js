@@ -29,9 +29,11 @@ const RestaurantItem = ({ restaurant }) => {
             {restaurant.minDeliveryTime}-{restaurant.maxDeliveryTime} minutes
           </Text>
         </View>
-        <View style={styles.rating}>
-          <Text>{restaurant.rating.toFixed(1)}</Text>
-        </View>
+        {!!restaurant.rating && (
+          <View style={styles.rating}>
+            <Text>{restaurant.rating?.toFixed(1)}</Text>
+          </View>
+        )}
       </View>
     </Pressable>
   );
