@@ -5,7 +5,9 @@ import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 const OrderListItem = ({ order }) => {
   const navigation = useNavigation();
   return (
-    <Pressable onPress={() => navigation.navigate("OrderDetails")}>
+    <Pressable
+      onPress={() => navigation.navigate("OrderDetails", { id: order.id })}
+    >
       <View style={styles.container}>
         <Image source={{ uri: order.Restaurant.image }} style={styles.image} />
         <View style={styles.order}>

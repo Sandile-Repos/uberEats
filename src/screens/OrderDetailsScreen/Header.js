@@ -1,12 +1,12 @@
 import React from "react";
-import { View, Text, FlatList, Image } from "react-native";
+import { View, Text, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import orders from "../../../assets/data/orders.json";
 import styles from "./styles";
 
-// const order = orders[0];
-
 const OrderDetailsHeader = ({ order }) => {
+  console.log(order);
+  const DEFAULT_IMAGE =
+    "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant4.jpeg";
   return (
     <View>
       <LinearGradient
@@ -15,7 +15,11 @@ const OrderDetailsHeader = ({ order }) => {
       >
         <View style={styles.page}>
           <Image
-            source={{ uri: order.Restaurant.image }}
+            source={{
+              uri: order.Restaurant.image.startsWith("http")
+                ? order.Restaurant.image
+                : DEFAULT_IMAGE,
+            }}
             style={styles.image}
           />
           <View style={styles.container}>
