@@ -13,7 +13,7 @@ const BasketScreen = () => {
   const onCreateOrder = async () => {
     const newOrder = await createOrder();
     navigation.navigate("OrdersTab", {
-      screen: "OrderDetails",
+      screen: "Order",
       params: { id: newOrder.id },
     });
   };

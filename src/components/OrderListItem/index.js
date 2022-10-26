@@ -6,7 +6,7 @@ const OrderListItem = ({ order }) => {
   const navigation = useNavigation();
 
   const onPress = () => {
-    navigation.navigate("OrderDetails", { id: order.id });
+    navigation.navigate("Order", { id: order.id });
   };
   return (
     <Pressable onPress={onPress}>

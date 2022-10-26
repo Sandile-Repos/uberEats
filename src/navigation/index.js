@@ -61,6 +61,7 @@ const HomeTabs = () => {
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name="list-alt" size={24} color={color} />
           ),
+          headerShown: false,
         }}
       />
       <Tab.Screen
@@ -95,10 +96,10 @@ const HomeStackNavigator = () => {
 const OrderStack = createNativeStackNavigator();
 const OrderStackNavigator = () => {
   return (
-    <OrderStack.Navigator screenOptions={{ headerShown: false }}>
-      <OrderStack.Screen name="Orderss" component={OrdersScreen} />
+    <OrderStack.Navigator>
+      <OrderStack.Screen name="Orders" component={OrdersScreen} />
       <OrderStack.Screen
-        name="OrderDetails"
+        name="Order"
         component={OrderDetailsNavigator}
         screenOptions={{ headerShown: false }}
       />
