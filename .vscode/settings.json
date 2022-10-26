@@ -8,5 +8,9 @@
     "amplify/backend/amplify-meta.json": true,
     "amplify/backend/awscloudformation": true
   },
-  "cSpell.words": ["Dishlist", "netinfo", "Pressable"]
+  "cSpell.words": [
+    "Dishlist",
+    "netinfo",
+    "Pressable"
+  ]
 }

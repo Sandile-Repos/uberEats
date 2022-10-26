@@ -12,7 +12,7 @@ import Header from "./Header";
 import styles from "./styles";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { DataStore } from "aws-amplify";
-import { Restaurant, Dish, BasketDish } from "../../models";
+import { Restaurant, Dish } from "../../models";
 import { useBasketContext } from "../../contexts/BasketContext";
 
 const RestaurantDetailsScreen = () => {
@@ -37,10 +37,12 @@ const RestaurantDetailsScreen = () => {
     //setBasketRestaurant of previous restaurant to null before querying another restaurant
     setBasketRestaurant(null);
     // fetch the restaurants with the id
-    DataStore.query(Restaurant, id).then(setRestaurant);
-    DataStore.query(Dish, (dish) => dish.restaurantID("eq", id)).then(
-      setDishes
-    );
+    DataStore.query(Restaurant, id)
+      .then(setRestaurant)
+      .catch((error) => console.log(error));
+    DataStore.query(Dish, (dish) => dish.restaurantID("eq", id))
+      .then(setDishes)
+      .catch((error) => console.log(error));
   }, [id]);
 
   useEffect(() => {

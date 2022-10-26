@@ -21,9 +21,17 @@ const ProfileScreen = () => {
 
   const onSave = async () => {
     if (dbUser) {
-      await updateUser();
+      try {
+        await updateUser();
+      } catch (error) {
+        console.log(error);
+      }
     } else {
-      await createUser();
+      try {
+        await createUser();
+      } catch (error) {
+        console.log(error);
+      }
     }
     navigation.goBack();
   };

@@ -4,17 +4,22 @@ import { View, Text, Image, StyleSheet, Pressable } from "react-native";
 
 const OrderListItem = ({ order }) => {
   const navigation = useNavigation();
+
+  const onPress = () => {
+    navigation.navigate("OrderDetails", { id: order.id });
+  };
   return (
-    <Pressable
-      onPress={() => navigation.navigate("OrderDetails", { id: order.id })}
-    >
+    <Pressable onPress={onPress}>
       <View style={styles.container}>
-        <Image source={{ uri: order.Restaurant.image }} style={styles.image} />
+        <Image
+          source={{ uri: order?.Restaurant?.image }}
+          style={styles.image}
+        />
         <View style={styles.order}>
-          <Text style={styles.name}>{order.Restaurant.name}</Text>
+          <Text style={styles.name}>{order?.Restaurant?.name}</Text>
           <Text style={styles.price}>3 items &#8226; R56.40</Text>
           <Text style={styles.status}>
-            {order.Restaurant.createdAt} &#8226; {order.status}
+            {order?.Restaurant?.createdAt} &#8226; {order?.status}
           </Text>
         </View>
       </View>

@@ -24,13 +24,19 @@ const DishDetailsScreen = () => {
 
   useEffect(() => {
     if (id) {
-      DataStore.query(Dish, id).then(setDish);
+      DataStore.query(Dish, id)
+        .then(setDish)
+        .catch((error) => console.log(error));
     }
   }, [id]);
 
   const onAddToBasket = async () => {
-    await addDishToBasket(dish, quantity);
-    navigation.navigate("Restaurant");
+    try {
+      await addDishToBasket(dish, quantity);
+      navigation.navigate("Restaurant");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const onMinus = () => {

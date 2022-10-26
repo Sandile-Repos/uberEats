@@ -7,14 +7,22 @@ import RestaurantDetailsScreen from "../screens/RestaurantDetailsScreen";
 import DishDetailsScreen from "../screens/DishDetailsScreen";
 import BasketScreen from "../screens/BasketScreen";
 import OrdersScreen from "../screens/OrdersScreen";
-import OrderDetailsScreen from "../screens/OrderDetailsScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { useAuthContext } from "../contexts/AuthContext";
+import OrderDetailsNavigator from "./OrderDetailsNavigator";
+import { ActivityIndicator, View } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
 const RootNavigator = () => {
-  const { dbUser } = useAuthContext();
+  const { dbUser, loading } = useAuthContext();
+  if (loading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        <ActivityIndicator size={"large"} color="grey" />
+      </View>
+    );
+  }
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
       {dbUser ? (
@@ -47,7 +55,7 @@ const HomeTabs = () => {
         }}
       />
       <Tab.Screen
-        name="Orders"
+        name="OrdersTab"
         component={OrderStackNavigator}
         options={{
           tabBarIcon: ({ color }) => (
@@ -89,7 +97,11 @@ const OrderStackNavigator = () => {
   return (
     <OrderStack.Navigator screenOptions={{ headerShown: false }}>
       <OrderStack.Screen name="Orderss" component={OrdersScreen} />
-      <OrderStack.Screen name="OrderDetails" component={OrderDetailsScreen} />
+      <OrderStack.Screen
+        name="OrderDetails"
+        component={OrderDetailsNavigator}
+        screenOptions={{ headerShown: false }}
+      />
     </OrderStack.Navigator>
   );
 };

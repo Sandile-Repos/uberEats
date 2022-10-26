@@ -8,6 +8,8 @@ import config from "./src/aws-exports";
 import AuthContextProvider from "./src/contexts/AuthContext";
 import BasketContextProvider from "./src/contexts/BasketContext";
 import OrderContextProvider from "./src/contexts/OrderContext";
+import { LogBox } from "react-native";
+LogBox.ignoreLogs(["Setting a timer"]);
 
 Amplify.configure({ ...config, Analytics: { disabled: true } });
 

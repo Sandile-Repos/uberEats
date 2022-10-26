@@ -16,14 +16,14 @@ const OrderDetailsHeader = ({ order }) => {
         <View style={styles.page}>
           <Image
             source={{
-              uri: order.Restaurant.image.startsWith("http")
-                ? order.Restaurant.image
+              uri: order?.Restaurant?.image.startsWith("http")
+                ? order?.Restaurant?.image
                 : DEFAULT_IMAGE,
             }}
             style={styles.image}
           />
           <View style={styles.container}>
-            <Text style={styles.title}>{order.Restaurant.name}</Text>
+            <Text style={styles.title}>{order?.Restaurant?.name}</Text>
             <Text style={styles.subtitle}>
               {order.status} &#8226; 2 days ago
             </Text>

@@ -4,17 +4,16 @@ import { FlatList, ActivityIndicator } from "react-native";
 import OrderDetailsHeader from "./Header";
 import BasketDishItem from "../../components/BasketDishItem";
 
-import { useRoute } from "@react-navigation/native";
 import { useOrderContext } from "../../contexts/OrderContext";
 
-const OrderDetailsScreen = () => {
+const OrderDetailsScreen = ({ id }) => {
   const [order, setOrder] = useState();
   const { getOrder } = useOrderContext();
-  const route = useRoute();
-  const id = route.params?.id;
 
   useEffect(() => {
-    getOrder(id).then(setOrder);
+    getOrder(id)
+      .then(setOrder)
+      .catch((error) => console.log(error));
   }, []);
 
   if (!order) {

@@ -9,9 +9,13 @@ const BasketScreen = () => {
   const { restaurant, basketDishes, totalPrice } = useBasketContext();
   const { createOrder } = useOrderContext();
   const navigation = useNavigation();
+
   const onCreateOrder = async () => {
-    await createOrder();
-    navigation.goBack();
+    const newOrder = await createOrder();
+    navigation.navigate("OrdersTab", {
+      screen: "OrderDetails",
+      params: { id: newOrder.id },
+    });
   };
   return (
     <View style={styles.page}>
