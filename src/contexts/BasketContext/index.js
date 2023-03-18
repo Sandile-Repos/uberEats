@@ -33,7 +33,6 @@ const BasketContextProvider = ({ children }) => {
       DataStore.query(BasketDish, (bd) => bd.basketID("eq", basket.id))
         .then(setBasketDishes)
         .catch((error) => console.log(error));
-      console.log("Hello basket dishes: ", basket);
     }
   }, [basket]);
 

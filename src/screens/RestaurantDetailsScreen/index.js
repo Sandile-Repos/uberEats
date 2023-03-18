@@ -47,7 +47,9 @@ const RestaurantDetailsScreen = () => {
 
   useEffect(() => {
     //passing restaurant to Basket context so we can get the restaurant id when adding to the basket
-    setBasketRestaurant(restaurant);
+    if (restaurant) {
+      setBasketRestaurant(restaurant);
+    }
   }, [restaurant]);
 
   if (!restaurant) {

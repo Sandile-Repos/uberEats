@@ -97,6 +97,7 @@ const ProfileScreen = () => {
         onChangeText={setLng}
         placeholder="Longitude"
         style={styles.input}
+        keyboardType="numeric"
       />
       <Button onPress={onSave} title="Save" />
       <Text

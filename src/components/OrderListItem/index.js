@@ -19,7 +19,7 @@ const OrderListItem = ({ order }) => {
           <Text style={styles.name}>{order?.Restaurant?.name}</Text>
           <Text style={styles.price}>3 items &#8226; R56.40</Text>
           <Text style={styles.status}>
-            {order?.Restaurant?.createdAt} &#8226; {order?.status}
+            {order?.Restaurant?.updatedAt} &#8226; {order?.status}
           </Text>
         </View>
       </View>
