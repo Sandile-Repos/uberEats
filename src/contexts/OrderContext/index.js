@@ -21,33 +21,37 @@ const OrderContextProvider = ({ children }) => {
 
   const createOrder = async () => {
     //create the order
-    const newOrder = await DataStore.save(
-      new Order({
-        userID: dbUser.id,
-        Restaurant: restaurant,
-        status: "NEW",
-        total: totalPrice,
-      })
-    );
+    try {
+      const newOrder = await DataStore.save(
+        new Order({
+          userID: dbUser.id,
+          Restaurant: restaurant,
+          status: "NEW",
+          total: totalPrice,
+        })
+      );
 
-    //add all basketDishes to the order(OrderDishes)
-    await Promise.all(
-      basketDishes.map((basketDish) =>
-        DataStore.save(
-          new OrderDish({
-            quantity: basketDish.quantity,
-            orderID: newOrder.id,
-            Dish: basketDish.Dish,
-          })
+      //add all basketDishes to the order(OrderDishes)
+      await Promise.all(
+        basketDishes.map((basketDish) =>
+          DataStore.save(
+            new OrderDish({
+              quantity: basketDish.quantity,
+              orderID: newOrder.id,
+              Dish: basketDish.Dish,
+            })
+          )
         )
-      )
-    );
+      );
 
-    //delete basket
-    await DataStore.delete(basket);
-    setOrders([...orders, newOrder]);
+      //delete basket
+      await DataStore.delete(basket);
+      setOrders([...orders, newOrder]);
 
-    return newOrder;
+      return newOrder;
+    } catch (error) {
+      console.log("Create Order Failed", error);
+    }
   };
 
   const getOrder = async (id) => {
